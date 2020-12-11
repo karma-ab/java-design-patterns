@@ -10,15 +10,24 @@ import com.learning.design.chainofresponsibility.AbstractLogger;
 import com.learning.design.chainofresponsibility.ConsolerLogger;
 import com.learning.design.chainofresponsibility.ErrorLogger;
 import com.learning.design.chainofresponsibility.FileLogger;
+import com.learning.design.command.BuyStock;
+import com.learning.design.command.SellStock;
+import com.learning.design.command.Stock;
+import com.learning.design.command.StockBroker;
 import com.learning.design.factory.abstct.AbstractFactory;
 import com.learning.design.factory.abstct.FactoryProducer;
 import com.learning.design.filter.*;
 
 import com.learning.design.flyweight.Circle;
 import com.learning.design.flyweight.ShapeFactory;
+import com.learning.design.interpreter.AndExpression;
+import com.learning.design.interpreter.Expression;
+import com.learning.design.interpreter.OrExpression;
+import com.learning.design.interpreter.TerminalExpression;
 import com.learning.design.proxy.Image;
 import com.learning.design.proxy.ProxyImage;
 import com.learning.design.singleton.SingletonObject;
+import jdk.nashorn.internal.codegen.ObjectCreator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -133,6 +142,28 @@ public class LearningMain {
         errorLogger.logMessage(AbstractLogger.DEBUG,"This is debug level message");
         errorLogger.logMessage(AbstractLogger.ERROR,"This is error level message");*/
 
+        //Command Pattern
+        /*Stock stock = new Stock();
+        BuyStock buyStock = new BuyStock(stock);
+        SellStock sellStock = new SellStock(stock);
+
+        StockBroker stockBroker = new StockBroker();
+        stockBroker.takeOrder(buyStock);
+        stockBroker.takeOrder(sellStock);
+        stockBroker.placeOrders();*/
+
+        //Interpreter
+        /*Expression termExpression1 = new TerminalExpression("John");
+        Expression termExpression2 = new TerminalExpression("Doe");
+        Expression maleOrExpression = new OrExpression(termExpression1,termExpression2);
+
+        Expression marriedExp1 = new TerminalExpression("Julie");
+        Expression marriedExp2 = new TerminalExpression("Married");
+        Expression marriedWomanExpression = new AndExpression(marriedExp1,marriedExp2);
+
+        System.out.println("Is John Male ? : " + maleOrExpression.interpret("John"));
+        System.out.println("Is Julie married ? : "+marriedWomanExpression.interpret("Married Julie"));*/
+
 
     }
 
@@ -156,5 +187,6 @@ public class LearningMain {
     /*private static int getRandomY() {
         return (int)(Math.random()*100);
     }*/
+
 
 }
