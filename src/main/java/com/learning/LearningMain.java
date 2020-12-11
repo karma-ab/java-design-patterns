@@ -6,12 +6,18 @@ import com.learning.design.bridge.RedCircle;
 import com.learning.design.bridge.Shape;
 import com.learning.design.builder.Meal;
 import com.learning.design.builder.MealBuilder;
+import com.learning.design.chainofresponsibility.AbstractLogger;
+import com.learning.design.chainofresponsibility.ConsolerLogger;
+import com.learning.design.chainofresponsibility.ErrorLogger;
+import com.learning.design.chainofresponsibility.FileLogger;
 import com.learning.design.factory.abstct.AbstractFactory;
 import com.learning.design.factory.abstct.FactoryProducer;
 import com.learning.design.filter.*;
 
 import com.learning.design.flyweight.Circle;
 import com.learning.design.flyweight.ShapeFactory;
+import com.learning.design.proxy.Image;
+import com.learning.design.proxy.ProxyImage;
 import com.learning.design.singleton.SingletonObject;
 
 import java.util.ArrayList;
@@ -19,7 +25,7 @@ import java.util.List;
 
 public class LearningMain {
     //Flyweight pattern
-    private static final String[] colors = { "Red", "Green", "Blue", "White", "Black" };
+    /*private static final String[] colors = { "Red", "Green", "Blue", "White", "Black" };*/
     public static void main(String[] args) {
 
         //Factory Design pattern
@@ -110,7 +116,24 @@ public class LearningMain {
             circle.draw();
         }*/
 
-        //
+        //Proxy Pattern
+        /*Image image = new ProxyImage("sony1000.jpeg");
+        image.display();
+        //next time , it wont load
+        image.display();*/
+
+        //Chain of Responsibility Pattern
+        /*AbstractLogger errorLogger = new ErrorLogger(AbstractLogger.ERROR);
+        AbstractLogger fileLogger = new FileLogger(AbstractLogger.DEBUG);
+        AbstractLogger consoleLogger = new ConsolerLogger(AbstractLogger.INFO);
+        errorLogger.setNextLogger(fileLogger);
+        fileLogger.setNextLogger(consoleLogger);
+
+        errorLogger.logMessage(AbstractLogger.INFO, "This is info level message");
+        errorLogger.logMessage(AbstractLogger.DEBUG,"This is debug level message");
+        errorLogger.logMessage(AbstractLogger.ERROR,"This is error level message");*/
+
+
     }
 
     //Filter Design Pattern
@@ -122,16 +145,16 @@ public class LearningMain {
     }*/
 
     //Flyweight pattern
-    private static String getRandomColor() {
+    /*private static String getRandomColor() {
         return colors[(int)(Math.random()*colors.length)];
-    }
+    }*/
     //Flyweight pattern
-    private static int getRandomX() {
+    /*private static int getRandomX() {
         return (int)(Math.random()*100 );
-    }
+    }*/
     //Flyweight pattern
-    private static int getRandomY() {
+    /*private static int getRandomY() {
         return (int)(Math.random()*100);
-    }
+    }*/
 
 }
