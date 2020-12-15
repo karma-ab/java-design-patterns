@@ -24,6 +24,8 @@ import com.learning.design.interpreter.AndExpression;
 import com.learning.design.interpreter.Expression;
 import com.learning.design.interpreter.OrExpression;
 import com.learning.design.interpreter.TerminalExpression;
+import com.learning.design.iterator.Iterator;
+import com.learning.design.iterator.NameRepository;
 import com.learning.design.proxy.Image;
 import com.learning.design.proxy.ProxyImage;
 import com.learning.design.singleton.SingletonObject;
@@ -164,6 +166,12 @@ public class LearningMain {
         System.out.println("Is John Male ? : " + maleOrExpression.interpret("John"));
         System.out.println("Is Julie married ? : "+marriedWomanExpression.interpret("Married Julie"));*/
 
+        //Iterator Pattern
+        /*NameRepository nameRepository = new NameRepository();
+        Iterator iterator = nameRepository.getIterator();
+        while(iterator.hasNext()){
+            System.out.println(iterator.next());
+        }*/
 
     }
 
