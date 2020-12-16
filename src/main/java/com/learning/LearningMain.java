@@ -37,11 +37,9 @@ import com.learning.threading.pool.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 public class LearningMain {
     //Flyweight pattern
@@ -190,7 +188,7 @@ public class LearningMain {
         reEntrantLock.finish();*/
 
         //Deadlock example
-        DeadLock deadLock = new DeadLock();
+        /*DeadLock deadLock = new DeadLock();
         Thread t1 = new Thread(()-> {
             try {
                 deadLock.firstThread();
@@ -212,7 +210,78 @@ public class LearningMain {
         t1.join();
         t2.join();
 
-        deadLock.finished();
+        deadLock.finished();*/
+
+        //Semaphore example
+        /*ExecutorService executors = Executors.newCachedThreadPool();
+        for (int i = 0; i < 200; i++) {
+            executors.submit(() -> {
+                try {
+                    ConnectionSemaphore.getInstance().connect();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+            });
+        }
+
+        executors.shutdown();
+         */
+
+        //Future and Callable
+        /*ExecutorService executors = Executors.newCachedThreadPool();
+        Future<Integer> future = executors.submit(()->{
+            Random random = new Random();
+            int val = random.nextInt(4000);
+
+            System.out.println("Starting...");
+
+            if(val>2000){
+                throw new RuntimeException("Sleeping for long...");
+            }
+
+            Thread.sleep(val);
+
+            System.out.println("Finished...");
+
+            return val;
+        });
+
+        executors.shutdown();
+
+        try {
+            System.out.println("Duration is :: " + future.get());
+        } catch (ExecutionException e) {
+            System.out.println(e.getMessage());
+        }*/
+
+        //Interrupted Example
+        /*System.out.println("Starting...");
+        Thread t1 = new Thread(()->{
+            Random random = new Random();
+            for (int i = 0; i < 1E6; i++) {
+
+                *//*if(Thread.currentThread().isInterrupted()){
+                    System.out.println("Interrupted");
+                    break;
+                }*//*
+
+                try {
+                    Thread.sleep(1);
+                } catch (InterruptedException e) {
+                    System.out.println("Interrupted!");
+                    break;
+                }
+
+                Math.sin(random.nextDouble());
+            }
+        });
+
+        t1.start();
+        t1.interrupt();
+        t1.join();
+        System.out.println("Finished...");*/
+
 
         /**
          *  Design Patterns implementation in main class
