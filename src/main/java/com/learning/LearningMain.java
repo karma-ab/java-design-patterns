@@ -29,15 +29,77 @@ import com.learning.design.iterator.NameRepository;
 import com.learning.design.proxy.Image;
 import com.learning.design.proxy.ProxyImage;
 import com.learning.design.singleton.SingletonObject;
-import jdk.nashorn.internal.codegen.ObjectCreator;
+import com.learning.threading.App;
+import com.learning.threading.MultiLockExample;
+import com.learning.threading.Processor;
+import com.learning.threading.Runner;
+import com.learning.threading.pool.Engine;
+import com.learning.threading.pool.EngineWithLatch;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class LearningMain {
     //Flyweight pattern
     /*private static final String[] colors = { "Red", "Green", "Blue", "White", "Black" };*/
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+
+        //Threading
+
+        /*Runner runner1 = new Runner();
+        runner1.start();
+
+        Runner runner2 = new Runner();
+        runner2.start();
+
+        Thread app1 = new Thread(new App());
+        app1.start();*/
+
+       /* Processor processor1 = new Processor();
+        processor1.start();
+
+        System.out.println("Press return to stop");
+        Scanner scanner = new Scanner(System.in);
+        scanner.nextLine();
+        processor1.shutdown();*/
+
+       /* MultiLockExample multiLockExample = new MultiLockExample();
+        multiLockExample.main();*/
+
+        //Thread pool
+       /* ExecutorService executorService = Executors.newFixedThreadPool(2);
+        for (int i = 0; i < 5; i++) {
+            executorService.submit(new Engine(i));
+        }
+
+        executorService.shutdown();
+
+        System.out.println("All tasks submitted ");
+
+        executorService.awaitTermination(100, TimeUnit.SECONDS);
+
+        System.out.println("All tasks completed");*/
+
+        //Countdown Latch
+        /*CountDownLatch latch = new CountDownLatch(3);
+        ExecutorService executor = Executors.newFixedThreadPool(3);
+        for (int i = 0; i < 3; i++) {
+            executor.submit(new EngineWithLatch(latch));
+        }
+
+        latch.await();
+
+        System.out.println("Completed....");*/
+
+
+        /**
+         *  Design Patterns implementation in main class
+         */
 
         //Factory Design pattern
         /*ShapeFactory shapeFactory = new ShapeFactory();
