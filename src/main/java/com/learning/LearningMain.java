@@ -164,6 +164,56 @@ public class LearningMain {
         t1.join();
         t2.join();*/
 
+        //Re-Entrant Lock example
+        /*ReEntrantLock reEntrantLock = new ReEntrantLock();
+        Thread t1 = new Thread(()-> {
+            try {
+                reEntrantLock.firstThread();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+        Thread t2 = new Thread(()-> {
+            try {
+                reEntrantLock.secondThread();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+
+        t1.start();
+        t2.start();
+
+        t1.join();
+        t2.join();
+
+        reEntrantLock.finish();*/
+
+        //Deadlock example
+        DeadLock deadLock = new DeadLock();
+        Thread t1 = new Thread(()-> {
+            try {
+                deadLock.firstThread();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+        Thread t2 = new Thread(()-> {
+            try {
+                deadLock.secondThread();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+
+        t1.start();
+        t2.start();
+
+        t1.join();
+        t2.join();
+
+        deadLock.finished();
+
         /**
          *  Design Patterns implementation in main class
          */
