@@ -33,8 +33,7 @@ import com.learning.threading.App;
 import com.learning.threading.MultiLockExample;
 import com.learning.threading.Processor;
 import com.learning.threading.Runner;
-import com.learning.threading.pool.Engine;
-import com.learning.threading.pool.EngineWithLatch;
+import com.learning.threading.pool.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -96,6 +95,74 @@ public class LearningMain {
 
         System.out.println("Completed....");*/
 
+
+        //Producer Consumer
+        /*ProducerConsumer producerConsumer = new ProducerConsumer();
+
+        Thread t1 = new Thread(()-> {
+            try {
+                producerConsumer.producer();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+        Thread t2 = new Thread(()-> {
+            try {
+                producerConsumer.consumer();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+
+        t1.start();
+        t2.start();*/
+
+        //Wait n Notify
+        /*ProcessorWaitNotify producerConsumer = new ProcessorWaitNotify();
+
+        Thread t1 = new Thread(()-> {
+            try {
+                producerConsumer.produce();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+        Thread t2 = new Thread(()-> {
+            try {
+                producerConsumer.consume();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+
+        t1.start();
+        t2.start();
+
+        t1.join();
+        t2.join();*/
+
+        //Producer Consumer Low level wait notify sync
+        /*ProducerConsumerWaitNotifyLowLevel producerConsumer = new ProducerConsumerWaitNotifyLowLevel();
+        Thread t1 = new Thread(()-> {
+            try {
+                producerConsumer.produce();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+        Thread t2 = new Thread(()-> {
+            try {
+                producerConsumer.consume();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+
+        t1.start();
+        t2.start();
+
+        t1.join();
+        t2.join();*/
 
         /**
          *  Design Patterns implementation in main class
